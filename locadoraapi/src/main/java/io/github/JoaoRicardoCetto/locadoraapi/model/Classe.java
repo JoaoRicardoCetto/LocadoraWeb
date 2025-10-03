@@ -24,7 +24,7 @@ public class Classe {
     @Column(nullable = false)
     private LocalDate prazoDevolucao;
 
-    @OneToMany(mappedBy = "classe")
+    @OneToMany(mappedBy = "classe", fetch = FetchType.LAZY)
     private List<Titulo> titulos;
 
 

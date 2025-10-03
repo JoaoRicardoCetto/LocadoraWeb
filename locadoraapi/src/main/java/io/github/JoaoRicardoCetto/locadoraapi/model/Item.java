@@ -21,7 +21,7 @@ public class Item {
     @Column(length = 100)
     private String tipoItem;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Titulo titulo;
 
     @Deprecated

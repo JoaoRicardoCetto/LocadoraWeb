@@ -18,7 +18,7 @@ public class Ator {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @ManyToMany(mappedBy = "atores")
+    @ManyToMany(mappedBy = "atores", fetch = FetchType.LAZY)
     private Set<Titulo> titulos = new HashSet<>();
 
     @Deprecated

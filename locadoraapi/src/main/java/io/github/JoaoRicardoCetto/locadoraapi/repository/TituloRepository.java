@@ -1,9 +1,8 @@
 package io.github.JoaoRicardoCetto.locadoraapi.repository;
 
 import io.github.JoaoRicardoCetto.locadoraapi.model.Titulo;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface TituloRepository extends JpaRepository<Titulo, UUID> {
+public interface TituloRepository extends IBaseRepository<Titulo, UUID> {
 }

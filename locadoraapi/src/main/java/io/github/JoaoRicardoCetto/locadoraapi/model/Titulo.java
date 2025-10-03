@@ -38,7 +38,7 @@ public class Titulo {
     @OneToMany(mappedBy = "titulo")
     private List<Item> itens;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "titulo_ator",
             joinColumns = @JoinColumn(name = "id_titulo"),
             inverseJoinColumns = @JoinColumn(name = "id_ator"))

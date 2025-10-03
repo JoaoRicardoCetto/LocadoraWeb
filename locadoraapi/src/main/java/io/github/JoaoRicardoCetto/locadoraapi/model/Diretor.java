@@ -16,7 +16,7 @@ public class Diretor {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @OneToMany(mappedBy = "diretor")
+    @OneToMany(mappedBy = "diretor", fetch = FetchType.LAZY)
     private List<Titulo> titulos;
 
     @Deprecated
