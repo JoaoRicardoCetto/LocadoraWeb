@@ -13,10 +13,13 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-// E = Entidade (Ex: Ator), S = Service (Ex: AtorService), RQ = Request DTO, RS = Response DTO
-public abstract class BaseController<E extends BaseEntity,
+// E = Entidade (Ex: Ator), S = Service (Ex: AtorService), request = Request DTO, response = Response DTO
+public abstract class BaseController
+        < E extends BaseEntity,
         S extends BaseService<E>,
-        RQ, RS> {
+        request,
+        response >
+{
 
     protected final S service;
 
@@ -25,13 +28,15 @@ public abstract class BaseController<E extends BaseEntity,
     }
 
     // 💡 Ganchos de Mapeamento: OBRIGA a subclasse a implementar a conversão
-    protected abstract E toEntity(RQ requestDto);
-    protected abstract RS toResponseDto(E entity);
+    protected abstract E toEntity(request requestDto);
+    protected abstract response toResponseDto(E entity);
 
     @PostMapping
-    public ResponseEntity<Void> salvar(@Valid @RequestBody RQ requestDto){
+    public ResponseEntity<response> salvar(@Valid @RequestBody request requestDto){
         E entity = toEntity(requestDto);
         service.salvar(entity);
+
+        response responseDto = toResponseDto(entity);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -39,22 +44,32 @@ public abstract class BaseController<E extends BaseEntity,
                 .buildAndExpand(entity.getId())
                 .toUri();
 
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(responseDto);
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<RS>> getAll(){
+    @GetMapping("")
+    public ResponseEntity<List<response>> getAll(){
         List<E> entities = service.obterTodos();
         
-        List<RS> responseDtos = entities.stream()
+        List<response> responseDtos = entities.stream()
                 .map(this::toResponseDto)
                 .collect(Collectors.toList());
-        
-        return ResponseEntity.ok(responseDtos);
+
+        long size = entities.size();
+        String resourceName = entities.getClass().toString(); // Substitua pelo nome do recurso (ex: atores)
+
+        String contentRangeHeader = String.format("%s 0-%d/%d", resourceName, size - 1, size);
+
+        return ResponseEntity.ok()
+                // 💡 HEADER ALTERNATIVO: Content-Range
+                .header("Content-Range", contentRangeHeader)
+                // Se o seu frontend estiver em um domínio diferente:
+                // .header("Access-Control-Expose-Headers", "Content-Range")
+                .body(responseDtos);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<RS> obterPorId(@PathVariable("id") String id){
+    public ResponseEntity<response> obterPorId(@PathVariable("id") String id){
         var uuid = UUID.fromString(id);
         Optional<E> entityOptional = service.obterPorId(uuid);
 
@@ -81,19 +96,21 @@ public abstract class BaseController<E extends BaseEntity,
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> atualizar(@PathVariable("id") String id, @Valid @RequestBody RQ requestDto){
+    public ResponseEntity<response> atualizar(@PathVariable("id") String id, @Valid @RequestBody request requestDto){
         var uuid = UUID.fromString(id);
+
         Optional<E> entityOptional = service.obterPorId(uuid);
 
         if(entityOptional.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-
         E entity = toEntity(requestDto); // Mapeia o DTO para a entidade
         entity.setId(uuid);
 
         service.atualizar(entity);
 
-        return ResponseEntity.noContent().build();
+        response responseDto = toResponseDto(entity);
+
+        return ResponseEntity.ok(responseDto);
     }
 }

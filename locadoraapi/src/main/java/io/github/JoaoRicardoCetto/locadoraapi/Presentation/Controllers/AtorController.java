@@ -31,14 +31,14 @@ public class AtorController extends BaseController<Ator, AtorService, AtorReques
         return atorMapper.toResponseDto(entity);
     }
 
-    @GetMapping
-    public ResponseEntity<List<AtorResponseDto>> pesquisar(@RequestParam(value = "nome", required = false) String nome){
-        List<Ator> resultado = service.pesquisar(nome);
-        
-        List<AtorResponseDto> lista = resultado.stream()
-                .map(atorMapper::toResponseDto)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(lista);
-    }
+//    @GetMapping("pesquisar_ator")
+//    public ResponseEntity<List<AtorResponseDto>> pesquisar(@RequestParam(value = "nome", required = false) String nome){
+//        List<Ator> resultado = service.pesquisar(nome);
+//
+//        List<AtorResponseDto> lista = resultado.stream()
+//                .map(atorMapper::toResponseDto)
+//                .collect(Collectors.toList());
+//
+//        return ResponseEntity.ok(lista);
+//    }
 }
