@@ -1,20 +1,18 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model;
+package io.github.JoaoRicardoCetto.locadoraapi.model.Entities;
 
+import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
-@Data
-public class Ator {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+@Getter
+@Setter
+public class Ator extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String nome;
 
@@ -25,7 +23,8 @@ public class Ator {
     public Ator() {
     }
 
-    public Ator(String nome) {
+    public Ator(String nome, Set<Titulo> titulos) {
         this.nome = nome;
+        this.titulos = titulos;
     }
 }

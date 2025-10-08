@@ -1,22 +1,20 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model;
+package io.github.JoaoRicardoCetto.locadoraapi.model.Entities;
 
+import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table
-@Data
-public class Titulo {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
+@Getter
+@Setter
+public class Titulo extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String nome;
 
@@ -27,11 +25,11 @@ public class Titulo {
     @Column(length = 100)
     private String categoria;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_diretor")
     private Diretor diretor;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_classe")
     private Classe classe;
 
@@ -48,11 +46,14 @@ public class Titulo {
     public Titulo() {
     }
 
-    public Titulo(String nome, LocalDate ano, String sinopse, String categoria) {
+    public Titulo(String nome, LocalDate ano, String sinopse, String categoria, Diretor diretor, Classe classe, Set<Ator> atores) {
         this.nome = nome;
         this.ano = ano;
         this.sinopse = sinopse;
         this.categoria = categoria;
+        this.diretor = diretor;
+        this.classe = classe;
+        this.atores = atores;
     }
 }
 

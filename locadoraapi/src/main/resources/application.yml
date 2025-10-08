@@ -9,4 +9,4 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update #create,none, create-drope
+      ddl-auto: update
