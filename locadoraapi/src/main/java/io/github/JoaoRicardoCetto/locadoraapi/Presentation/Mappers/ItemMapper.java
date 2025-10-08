@@ -1,10 +1,10 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ItemRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ItemResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.TituloResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.DiretorResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ClasseResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.ItemRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ItemResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.TituloResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.DiretorResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ClasseResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Item;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Titulo;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.TituloService;

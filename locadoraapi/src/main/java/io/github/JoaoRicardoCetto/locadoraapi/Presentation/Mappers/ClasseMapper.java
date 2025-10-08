@@ -1,8 +1,8 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ClasseRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ClasseResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.TituloResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.ClasseRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ClasseResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.TituloResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Classe;
 import org.springframework.stereotype.Component;
 

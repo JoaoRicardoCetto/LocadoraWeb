@@ -1,6 +1,7 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.*;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.AtorRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.AtorResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.AtorMapper;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Ator;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.AtorService;

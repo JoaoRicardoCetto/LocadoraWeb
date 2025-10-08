@@ -42,7 +42,7 @@ public abstract class BaseController<E extends BaseEntity,
         return ResponseEntity.created(location).build();
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<RS>> getAll(){
         List<E> entities = service.obterTodos();
         

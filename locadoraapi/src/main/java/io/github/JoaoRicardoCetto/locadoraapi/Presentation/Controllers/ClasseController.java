@@ -1,7 +1,7 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ClasseRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.ClasseResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.ClasseRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ClasseResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.ClasseMapper;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Classe;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.ClasseService;

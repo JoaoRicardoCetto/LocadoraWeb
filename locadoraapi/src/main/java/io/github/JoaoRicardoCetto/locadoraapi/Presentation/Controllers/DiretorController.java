@@ -1,7 +1,7 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.DiretorRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.DiretorResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.DiretorRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.DiretorResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.DiretorMapper;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Diretor;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.DiretorService;
