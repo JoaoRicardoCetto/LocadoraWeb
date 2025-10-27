@@ -6,21 +6,18 @@ import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Titulo;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Common.IBaseRepository;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.AtorRepository;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.TituloRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class TituloService extends BaseService<Titulo> {
 
     private final TituloRepository tituloRepository;
     private final AtorRepository atorRepository;
-
-    public TituloService(TituloRepository tituloRepository, AtorRepository atorRepository) {
-        this.tituloRepository = tituloRepository;
-        this.atorRepository = atorRepository;
-    }
 
     @Override
     protected IBaseRepository<Titulo> getRepository() {

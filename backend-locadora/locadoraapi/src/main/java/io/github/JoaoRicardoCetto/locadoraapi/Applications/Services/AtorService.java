@@ -6,21 +6,17 @@ import io.github.JoaoRicardoCetto.locadoraapi.Applications.Validators.AtorValida
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Ator;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.AtorRepository;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Common.IBaseRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AtorService extends BaseService<Ator> {
 
     private final AtorRepository atorRepository;
     private final AtorValidator validator;
-
-    public AtorService(AtorRepository atorRepository, AtorValidator validator) {
-
-        this.atorRepository = atorRepository;
-        this.validator = validator;
-    }
 
     @Override
     protected IBaseRepository<Ator> getRepository() {
