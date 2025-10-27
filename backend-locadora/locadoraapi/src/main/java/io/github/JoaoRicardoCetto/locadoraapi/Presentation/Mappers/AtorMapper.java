@@ -16,7 +16,7 @@ public class AtorMapper {
         
         return new Ator(
                 requestDto.nome(),
-                null // Títulos serão associados posteriormente
+                new java.util.HashSet<>() // Cria Set vazio para evitar atribuição de null
         );
     }
 
@@ -25,33 +25,22 @@ public class AtorMapper {
             return null;
         }
         
-        return new AtorResponseDto(
-                entity.getId(),
-                entity.getNome(),
-                null // Evitar recursão infinita - títulos serão carregados separadamente se necessário
-        );
+    return new AtorResponseDto(
+        entity.getId(),
+        entity.getNome(),
+        entity.getTitulos().stream()
+            .map(titulo -> new TituloResponseDto(
+                titulo.getId(),
+                titulo.getNome(),
+                titulo.getAno(),
+                titulo.getSinopse(),
+                titulo.getCategoria(),
+                null, // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null  // Evitar recursão infinita
+            ))
+            .collect(java.util.stream.Collectors.toSet())
+    );
     }
 
-    public AtorResponseDto toResponseDtoWithTitulos(Ator entity) {
-        if (entity == null) {
-            return null;
-        }
-        
-        return new AtorResponseDto(
-                entity.getId(),
-                entity.getNome(),
-                entity.getTitulos().stream()
-                        .map(titulo -> new TituloResponseDto(
-                                titulo.getId(),
-                                titulo.getNome(),
-                                titulo.getAno(),
-                                titulo.getSinopse(),
-                                titulo.getCategoria(),
-                                null, // Evitar recursão infinita
-                                null, // Evitar recursão infinita
-                                null  // Evitar recursão infinita
-                        ))
-                        .collect(java.util.stream.Collectors.toSet())
-        );
-    }
 }

@@ -25,6 +25,6 @@ public class Ator extends BaseEntity {
 
     public Ator(String nome, Set<Titulo> titulos) {
         this.nome = nome;
-        this.titulos = titulos;
+        this.titulos = titulos != null ? titulos : new HashSet<>();
     }
 }

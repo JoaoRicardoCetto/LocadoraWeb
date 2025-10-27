@@ -81,7 +81,7 @@ public abstract class BaseController
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") String id){
+    public ResponseEntity<Object> delete(@PathVariable("id") String id){
         var uuid = UUID.fromString(id);
         Optional<E> entityOptional = service.obterPorId(uuid);
 

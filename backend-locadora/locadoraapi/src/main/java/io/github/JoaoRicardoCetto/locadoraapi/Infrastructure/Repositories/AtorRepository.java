@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AtorRepository extends IBaseRepository<Ator> {
     List<Ator> findByNome(String nome);
+
 }
