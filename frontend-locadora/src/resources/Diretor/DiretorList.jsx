@@ -1,10 +1,15 @@
-import { DataTable, List } from 'react-admin';
+import { List, Datagrid, TextField, EditButton, ArrayField, SingleFieldList, ChipField } from 'react-admin';
 
 export const DiretorList = () => (
     <List>
-        <DataTable>
-            <DataTable.Col source="nome" />
-            <DataTable.Col source="titulos" />
-        </DataTable>
+        <Datagrid rowClick="show">
+            <TextField source="nome" />
+            <ArrayField label="Títulos" source="titulos">
+                <SingleFieldList>
+                    <ChipField source="nome" />
+                </SingleFieldList>
+            </ArrayField>
+            <EditButton />
+        </Datagrid>
     </List>
 );

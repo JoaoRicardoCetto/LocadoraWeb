@@ -1,10 +1,28 @@
-import { Create, SimpleForm,TextInput, required  } from 'react-admin';
+import {
+  Create,
+  SimpleForm,
+  TextInput,
+  required,
+  ReferenceArrayInput,
+  AutocompleteArrayInput,
+} from 'react-admin';
 
-export const AtorCreate = (props) => (
-    <Create {...props}>
-        <SimpleForm>
-            <TextInput source="nome" validate={required()} />
-            <TextInput source="titulos" />
-        </SimpleForm>
+const validateRequired = required();
+
+export const AtorCreate = (props) => {
+  const transform = (data) => ({
+    ...data,
+    titulos: data.titulos || [],
+  });
+
+  return (
+    <Create {...props} transform={transform}>
+      <SimpleForm>
+        <TextInput source="nome" validate={validateRequired} />
+        <ReferenceArrayInput source="titulos" reference="titulo">
+          <AutocompleteArrayInput optionText="nome" />
+        </ReferenceArrayInput>
+      </SimpleForm>
     </Create>
-);
+  );
+};

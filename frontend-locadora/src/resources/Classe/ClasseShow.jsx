@@ -1,4 +1,4 @@
-import { DateField, NumberField, Show, SimpleShowLayout, TextField } from 'react-admin';
+import { DateField, NumberField, Show, SimpleShowLayout, TextField, ArrayField, SingleFieldList, ChipField } from 'react-admin';
 
 export const ClasseShow = () => (
     <Show>
@@ -7,7 +7,11 @@ export const ClasseShow = () => (
             <TextField source="nome" />
             <NumberField source="valor" />
             <DateField source="prazoDevolucao" />
-            <TextField source="titulos" />
+            <ArrayField label="Títulos" source="titulos">
+                <SingleFieldList>
+                    <ChipField source="nome" />
+                </SingleFieldList>
+            </ArrayField>
         </SimpleShowLayout>
     </Show>
 );

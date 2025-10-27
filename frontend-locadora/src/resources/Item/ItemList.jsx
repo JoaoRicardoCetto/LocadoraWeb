@@ -1,14 +1,15 @@
-import { DataTable, DateField, List } from 'react-admin';
+import { List, Datagrid, TextField, DateField, ReferenceField, EditButton } from 'react-admin';
 
 export const ItemList = () => (
     <List>
-        <DataTable>
-            <DataTable.Col source="numSerie" />
-            <DataTable.Col source="tipo" />
-            <DataTable.Col source="dataAquisicao">
-                <DateField source="dataAquisicao" />
-            </DataTable.Col>
-            <DataTable.Col source="titulo" />
-        </DataTable>
+        <Datagrid rowClick="show">
+            <TextField source="numSerie" />
+            <TextField source="tipo" />
+            <DateField source="dataAquisicao" />
+            <ReferenceField source="titulo" reference="titulo" link="show">
+                <TextField source="nome" />
+            </ReferenceField>
+            <EditButton />
+        </Datagrid>
     </List>
 );

@@ -1,10 +1,26 @@
-import { Edit, SimpleForm, TextInput, required } from 'react-admin';
+import {
+    Edit,
+    SimpleForm,
+    TextInput,
+    required,
+    ReferenceArrayInput,
+    AutocompleteArrayInput,
+} from 'react-admin';
 
-export const DiretorEdit = () => (
-    <Edit>
-        <SimpleForm>
-            <TextInput source="nome" validate={required()} />
-            <TextInput source="titulos" />
-        </SimpleForm>
-    </Edit>
-);
+export const DiretorEdit = () => {
+    const transform = (data) => ({
+        ...data,
+        titulos: data.titulos || [],
+    });
+
+    return (
+        <Edit transform={transform}>
+            <SimpleForm>
+                <TextInput source="nome" validate={required()} />
+                <ReferenceArrayInput source="titulos" reference="titulo">
+                    <AutocompleteArrayInput optionText="nome" />
+                </ReferenceArrayInput>
+            </SimpleForm>
+        </Edit>
+    );
+};
