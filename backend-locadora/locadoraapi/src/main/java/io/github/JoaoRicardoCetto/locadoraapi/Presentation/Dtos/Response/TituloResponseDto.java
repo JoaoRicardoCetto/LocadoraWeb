@@ -2,6 +2,7 @@ package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response;
 
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 public record TituloResponseDto(
@@ -12,6 +13,7 @@ public record TituloResponseDto(
         String categoria,
         DiretorResponseDto diretor,
         ClasseResponseDto classe,
-        Set<AtorResponseDto> atores
+        Set<AtorResponseDto> atores,
+        List<ItemResponseDto> itens
 ) {
 }

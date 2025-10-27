@@ -32,20 +32,6 @@ public class ClasseMapper {
                 entity.getNome(),
                 entity.getValor(),
                 entity.getPrazoDevolucao(),
-                null // Evitar recursão infinita - títulos serão carregados separadamente se necessário
-        );
-    }
-
-    public ClasseResponseDto toResponseDtoWithTitulos(Classe entity) {
-        if (entity == null) {
-            return null;
-        }
-        
-        return new ClasseResponseDto(
-                entity.getId(),
-                entity.getNome(),
-                entity.getValor(),
-                entity.getPrazoDevolucao(),
                 entity.getTitulos().stream()
                         .map(titulo -> new TituloResponseDto(
                                 titulo.getId(),
@@ -53,9 +39,10 @@ public class ClasseMapper {
                                 titulo.getAno(),
                                 titulo.getSinopse(),
                                 titulo.getCategoria(),
-                                null, // Evitar recursão infinita
-                                null, // Evitar recursão infinita
-                                null  // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null  // itens não incluídos aqui
                         ))
                         .collect(java.util.stream.Collectors.toList())
         );

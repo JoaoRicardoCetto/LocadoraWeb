@@ -1,20 +1,15 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers;
 
 import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.TituloRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.TituloResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.AtorResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.DiretorResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ClasseResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Titulo;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Diretor;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Classe;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Ator;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.*;
+import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.*;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.DiretorService;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.ClasseService;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.AtorService;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -72,7 +67,6 @@ public class TituloMapper {
         if (entity == null) {
             return null;
         }
-        
         return new TituloResponseDto(
                 entity.getId(),
                 entity.getNome(),
@@ -81,7 +75,8 @@ public class TituloMapper {
                 entity.getCategoria(),
                 mapDiretor(entity.getDiretor()),
                 mapClasse(entity.getClasse()),
-                mapAtores(entity.getAtores())
+                mapAtores(entity.getAtores()),
+                mapItens(entity.getItens())
         );
     }
 
@@ -120,5 +115,20 @@ public class TituloMapper {
                         null // Evitar recursão infinita
                 ))
                 .collect(Collectors.toSet());
+    }
+
+    private List<ItemResponseDto> mapItens(List<Item> itens) {
+        if (itens == null) {
+            return null;
+        }
+        return itens.stream()
+                .map(item -> new ItemResponseDto(
+                        item.getId(),
+                        item.getTipoItem(),
+                        item.getDtAquisicao(),
+                        item.getNumSerie(),
+                        null // Evitar recursão: não incluir o título completo aqui
+                ))
+                .collect(java.util.stream.Collectors.toList());
     }
 }

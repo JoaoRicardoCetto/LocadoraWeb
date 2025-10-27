@@ -24,19 +24,6 @@ public class DiretorMapper {
         if (entity == null) {
             return null;
         }
-        
-        return new DiretorResponseDto(
-                entity.getId(),
-                entity.getNome(),
-                null // Evitar recursão infinita - títulos serão carregados separadamente se necessário
-        );
-    }
-
-    public DiretorResponseDto toResponseDtoWithTitulos(Diretor entity) {
-        if (entity == null) {
-            return null;
-        }
-        
         return new DiretorResponseDto(
                 entity.getId(),
                 entity.getNome(),
@@ -47,9 +34,10 @@ public class DiretorMapper {
                                 titulo.getAno(),
                                 titulo.getSinopse(),
                                 titulo.getCategoria(),
-                                null, // Evitar recursão infinita
-                                null, // Evitar recursão infinita
-                                null  // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null  // itens não incluídos aqui
                         ))
                         .collect(java.util.stream.Collectors.toList())
         );

@@ -57,7 +57,6 @@ public class ItemMapper {
         if (titulo == null) {
             return null;
         }
-        
         return new TituloResponseDto(
                 titulo.getId(),
                 titulo.getNome(),
@@ -66,7 +65,8 @@ public class ItemMapper {
                 titulo.getCategoria(),
                 mapDiretor(titulo.getDiretor()),
                 mapClasse(titulo.getClasse()),
-                null // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null  // itens não incluídos aqui para evitar ciclos
         );
     }
 

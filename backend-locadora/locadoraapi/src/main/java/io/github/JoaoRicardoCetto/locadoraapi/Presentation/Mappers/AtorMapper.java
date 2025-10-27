@@ -37,7 +37,8 @@ public class AtorMapper {
                 titulo.getCategoria(),
                 null, // Evitar recursão infinita
                 null, // Evitar recursão infinita
-                null  // Evitar recursão infinita
+                null, // Evitar recursão infinita
+                null  // itens não incluídos aqui
             ))
             .collect(java.util.stream.Collectors.toSet())
     );
