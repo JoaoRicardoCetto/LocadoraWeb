@@ -1,4 +1,4 @@
-import { List, Datagrid, TextField, DateField, ReferenceField, EditButton } from 'react-admin';
+import { List, Datagrid, TextField, DateField, EditButton } from 'react-admin';
 
 export const ItemList = () => (
     <List>
@@ -6,9 +6,8 @@ export const ItemList = () => (
             <TextField source="numSerie" />
             <TextField source="tipo" />
             <DateField source="dataAquisicao" />
-            <ReferenceField source="titulo" reference="titulo" link="show">
-                <TextField source="nome" />
-            </ReferenceField>
+            {/* Mostrar título aninhado (nome) */}
+            <TextField label="Título" source="titulo.nome" />
             <EditButton />
         </Datagrid>
     </List>

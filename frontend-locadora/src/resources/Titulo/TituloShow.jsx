@@ -18,7 +18,12 @@ export const TituloShow = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
-
+            
+            <ArrayField label="Itens" source="itens">
+                <SingleFieldList>
+                    <ChipField source="numSerie" />
+                </SingleFieldList>
+            </ArrayField>
         </SimpleShowLayout>
     </Show>
 );

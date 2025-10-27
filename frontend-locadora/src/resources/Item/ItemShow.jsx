@@ -1,4 +1,4 @@
-import { DateField, Show, SimpleShowLayout, TextField, NumberField, ReferenceField } from 'react-admin';
+import { DateField, Show, SimpleShowLayout, TextField, NumberField } from 'react-admin';
 
 export const ItemShow = () => (
     <Show>
@@ -7,10 +7,9 @@ export const ItemShow = () => (
             <TextField source="numSerie" />
             <TextField source="tipo" />
             <DateField source="dataAquisicao" />
-            <NumberField source="preco" />
-            <ReferenceField source="titulo" reference="titulo" link="show">
-                <TextField source="nome" />
-            </ReferenceField>
+            {/* Item não possui preco na entidade; removido */}
+            {/* Mostrar título aninhado */}
+            <TextField label="Título" source="titulo.nome" />
         </SimpleShowLayout>
     </Show>
 );

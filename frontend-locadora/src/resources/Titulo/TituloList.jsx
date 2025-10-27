@@ -10,7 +10,7 @@ import {
 
 export const TituloList = () => (
   <List>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="nome" />
       <DateField source="ano" showTime={false} />
       <TextField source="sinopse" />
@@ -23,6 +23,11 @@ export const TituloList = () => (
       <ArrayField label="Atores" source="atores">
         <SingleFieldList>
           <ChipField source="nome" />
+        </SingleFieldList>
+      </ArrayField>
+      <ArrayField label="Itens" source="itens">
+        <SingleFieldList>
+          <ChipField source="numSerie" />
         </SingleFieldList>
       </ArrayField>
     </Datagrid>
