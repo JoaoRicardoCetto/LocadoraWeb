@@ -1,0 +1,107 @@
+version: "3.9"
+
+services:
+  # === NGINX (Reverse Proxy) ===
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx_reverse
+    restart: always
+    ports:
+      - "80:80" # Única porta exposta publicamente
+    volumes:   
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - react
+      - react2
+      - spring
+    networks:
+      - public_network
+
+  # === FRONTEND 1 (React / Vite) ===
+  react:
+    build:
+      context: ./frontend-locadora
+      dockerfile: dockerfile
+    container_name: react_frontend_1 # Nome de contêiner único
+    restart: always
+    # 'ports' removido - Nginx acessará pela rede interna na porta 3000
+    environment:
+      - VITE_API_URL=/api # Aponta para o caminho /api no proxy Nginx
+    depends_on:
+      - spring
+    networks:
+      - public_network
+
+  # === FRONTEND 2 (React / Vite) ===
+  react2:
+    build:
+      context: ./frontend-locadora # Assumindo 2 instâncias da mesma app
+      dockerfile: dockerfile
+    container_name: react_frontend_2 # Nome de contêiner único
+    restart: always
+    # 'ports' removido - Nginx acessará pela rede interna na porta 3000
+    environment:
+      - VITE_API_URL=/api # Aponta para o caminho /api no proxy Nginx
+    depends_on:
+      - spring
+    networks:
+      - public_network
+
+  # === BACKEND (Spring Boot) ===
+  spring:
+    build:
+      context: ./backend-locadora/locadoraapi
+      dockerfile: dockerfile
+    container_name: spring_backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/locadora
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - db-postgres
+    networks:
+      - public_network
+
+  # === BANCO DE DADOS (PostgreSQL) ===
+  db-postgres:
+    image: postgres:16.3
+    container_name: db_postgres
+    restart: always
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: locadora
+    volumes:
+      - locadoradb_data:/var/lib/postgresql/data
+    networks:
+      - public_network
+
+  # === PGADMIN ===
+  pg-admin:
+    image: dpage/pgadmin4
+    container_name: pg_admin
+    restart: always
+    ports:
+      - "15432:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - db-postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - public_network
+
+volumes:
+  locadoradb_data:
+  pgadmin_data:
+
+networks:
+  public_network:
+    driver: bridge

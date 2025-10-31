@@ -1,0 +1,59 @@
+include /etc/nginx/conf.d/*.conf;
+
+# upstreams (mantém os seus)
+upstream frontend_app {
+    server react:3000;
+    server react2:3000;
+}
+
+upstream backend_app {
+    server spring:8080;
+}
+
+server {
+    # Escuta em IPv4 e IPv6 explicitamente
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    # Resposta simples para health/debug do próprio NGINX
+    location = /nginx-health {
+        return 200 'nginx ok';
+        add_header Content-Type text/plain;
+    }
+
+    # Frontend (load-balanced, suporta HMR/WebSocket)
+    location / {
+        proxy_pass http://frontend_app;
+        proxy_http_version 1.1;
+
+        proxy_set_header X-Frontend-ID $upstream_addr;
+
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_cache_bypass $http_upgrade;
+        proxy_buffering off;
+    }
+
+    # API, strip /api/ prefix
+    location /api/ {
+        rewrite ^/api/(.*)$ /$1 break;
+        proxy_pass http://backend_app;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_buffering off;
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 120s;
+        proxy_read_timeout 120s;
+    }
+}
