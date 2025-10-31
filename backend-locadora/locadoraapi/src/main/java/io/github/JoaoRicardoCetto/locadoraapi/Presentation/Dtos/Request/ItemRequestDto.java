@@ -16,9 +16,7 @@ public record ItemRequestDto(
         LocalDate dataAquisicao,
         
         @NotNull(message = "Número de série é obrigatório")
-        int numSerie,
-        
-        @NotNull(message = "ID do título é obrigatório")
-        UUID tituloId
+        int numSerie
+
 ) {
 }

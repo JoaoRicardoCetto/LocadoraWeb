@@ -13,8 +13,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173") // Ajuste para a porta do frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOrigins("*") // Ajuste para a porta do frontend
+                        .allowedMethods("*")
                         .allowedHeaders("*")
                         .exposedHeaders("Content-Range"); // Exponha o Content-Range
             }

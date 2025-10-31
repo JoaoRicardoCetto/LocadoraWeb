@@ -26,16 +26,11 @@ public class ItemMapper {
             return null;
         }
         
-        Titulo titulo = null;
-        if (requestDto.tituloId() != null) {
-            titulo = tituloService.obterPorId(requestDto.tituloId()).orElse(null);
-        }
-        
         return new Item(
                 requestDto.numSerie(), // numSerie será gerado automaticamente
                 requestDto.dataAquisicao(),
                 requestDto.tipo(),
-                titulo
+                null // Título será associado posteriormente
         );
     }
 
