@@ -17,9 +17,6 @@ export const DiretorCreate = (props) => {
         <Create {...props} transform={transform}>
             <SimpleForm>
                 <TextInput source="nome" validate={required()} />
-                <ReferenceArrayInput source="titulos" reference="titulo">
-                    <AutocompleteArrayInput optionText="nome" />
-                </ReferenceArrayInput>
             </SimpleForm>
         </Create>
     );

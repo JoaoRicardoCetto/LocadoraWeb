@@ -84,15 +84,11 @@ export const TituloEdit = (props) => {
                     <SelectInput optionText="nome" />
                 </ReferenceInput>
 
-                {/* --- CAMPO ATORES CORRIGIDO E OTIMIZADO --- */}
                 <ReferenceArrayInput
-                    source="atores" // source="atores" é o campo que contém o array de objetos
+                    source="atores" 
                     reference="atores"
                     allowEmpty
-                    // Aplica a formatação para extrair apenas o ID como string
                     format={formatAtores}
-                    // Adicione este filtro vazio; ele garante que o AutocompleteArrayInput
-                    // dispare a busca pelos IDs iniciais assim que o formulário é carregado.
                     filter={{}}
                 >
                     <AutocompleteArrayInput optionText="nome" />

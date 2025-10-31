@@ -19,9 +19,6 @@ export const AtorCreate = (props) => {
     <Create {...props} transform={transform}>
       <SimpleForm>
         <TextInput source="nome" validate={validateRequired} />
-        <ReferenceArrayInput source="titulos" reference="titulo">
-          <AutocompleteArrayInput optionText="nome" />
-        </ReferenceArrayInput>
       </SimpleForm>
     </Create>
   );

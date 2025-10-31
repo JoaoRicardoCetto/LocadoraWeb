@@ -21,9 +21,6 @@ export const ClasseCreate = (props) => {
                 <TextInput source="nome" validate={required()} />
                 <NumberInput source="valor" validate={required()} />
                 <DateInput source="prazoDevolucao" validate={required()} />
-                <ReferenceArrayInput source="titulos" reference="titulo">
-                    <AutocompleteArrayInput optionText="nome" />
-                </ReferenceArrayInput>
             </SimpleForm>
         </Create>
     );

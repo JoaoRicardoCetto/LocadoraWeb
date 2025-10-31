@@ -12,7 +12,6 @@ import {
 const validateRequired = required();
 
 export const ItemEdit = (props) => {
-    // transform to convert nested titulo object into tituloId when present
     const transform = (formData) => {
         const payload = { ...formData };
         if (payload.titulo && typeof payload.titulo === 'object') {
