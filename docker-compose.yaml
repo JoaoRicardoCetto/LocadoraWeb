@@ -3,11 +3,11 @@ version: "3.9"
 services:
   # === NGINX (Reverse Proxy) ===
   nginx:
-    image: nginx:stable-alpine
+    image: nginx:latest
     container_name: nginx_reverse
     restart: always
     ports:
-      - "80:80" # Única porta exposta publicamente
+      - "80:80"
     volumes:   
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
@@ -22,11 +22,11 @@ services:
     build:
       context: ./frontend-locadora
       dockerfile: dockerfile
+      args:
+        - VITE_INSTANCE_ID_BUILD=1
     container_name: react_frontend_1 # Nome de contêiner único
     restart: always
-    # 'ports' removido - Nginx acessará pela rede interna na porta 3000
-    environment:
-      - VITE_API_URL=/api # Aponta para o caminho /api no proxy Nginx
+    # 'ports' não é necessário, o Nginx acessará pela rede interna na porta 3000
     depends_on:
       - spring
     networks:
@@ -37,11 +37,11 @@ services:
     build:
       context: ./frontend-locadora # Assumindo 2 instâncias da mesma app
       dockerfile: dockerfile
+      args:
+        - VITE_INSTANCE_ID_BUILD=2
     container_name: react_frontend_2 # Nome de contêiner único
     restart: always
-    # 'ports' removido - Nginx acessará pela rede interna na porta 3000
-    environment:
-      - VITE_API_URL=/api # Aponta para o caminho /api no proxy Nginx
+    # 'ports' não é necessário, o Nginx acessará pela rede interna na porta 3000
     depends_on:
       - spring
     networks:
