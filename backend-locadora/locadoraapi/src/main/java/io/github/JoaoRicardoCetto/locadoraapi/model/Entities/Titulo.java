@@ -34,7 +34,7 @@ public class Titulo extends BaseEntity {
     private Classe classe;
 
     @OneToMany(mappedBy = "titulo")
-    private List<Item> itens;
+    private List<Item> itens = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "titulo_ator",

@@ -9,7 +9,7 @@ export const ItemShow = () => (
             <DateField source="dataAquisicao" />
             {/* Item não possui preco na entidade; removido */}
             {/* Mostrar título aninhado */}
-            <TextField label="Título" source="titulo.nome" />
+            <TextField label="Titulo" source="titulo.nome" />
         </SimpleShowLayout>
     </Show>
 );

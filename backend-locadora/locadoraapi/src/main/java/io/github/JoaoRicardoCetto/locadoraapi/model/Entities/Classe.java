@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,17 +21,17 @@ public class Classe extends BaseEntity {
     private double valor;
 
     @Column(nullable = false)
-    private LocalDate prazoDevolucao;
+    private int prazoDevolucao;
 
     @OneToMany(mappedBy = "classe", fetch = FetchType.LAZY)
-    private List<Titulo> titulos;
+    private List<Titulo> titulos = new ArrayList<>();
 
 
     @Deprecated
     public Classe() {
     }
 
-    public Classe(String nome, double valor, LocalDate prazoDevolucao, List<Titulo> titulos) {
+    public Classe(String nome, double valor, int prazoDevolucao, List<Titulo> titulos) {
         this.nome = nome;
         this.valor = valor;
         this.prazoDevolucao = prazoDevolucao;

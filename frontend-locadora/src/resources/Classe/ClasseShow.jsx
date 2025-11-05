@@ -6,7 +6,7 @@ export const ClasseShow = () => (
             <TextField source="id" />
             <TextField source="nome" />
             <NumberField source="valor" />
-            <DateField source="prazoDevolucao" />
+            <NumberField source="prazoDevolucao" />
             <ArrayField label="Títulos" source="titulos">
                 <SingleFieldList>
                     <ChipField source="nome" />

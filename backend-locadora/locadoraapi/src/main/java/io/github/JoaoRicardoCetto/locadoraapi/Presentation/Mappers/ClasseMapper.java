@@ -32,19 +32,21 @@ public class ClasseMapper {
                 entity.getNome(),
                 entity.getValor(),
                 entity.getPrazoDevolucao(),
-                entity.getTitulos().stream()
-                        .map(titulo -> new TituloResponseDto(
-                                titulo.getId(),
-                                titulo.getNome(),
-                                titulo.getAno(),
-                                titulo.getSinopse(),
-                                titulo.getCategoria(),
-                null, // Evitar recursão infinita
-                null, // Evitar recursão infinita
-                null, // Evitar recursão infinita
-                null  // itens não incluídos aqui
-                        ))
-                        .collect(java.util.stream.Collectors.toList())
+                entity.getTitulos() != null ? 
+                        entity.getTitulos().stream()
+                                .map(titulo -> new TituloResponseDto(
+                                        titulo.getId(),
+                                        titulo.getNome(),
+                                        titulo.getAno(),
+                                        titulo.getSinopse(),
+                                        titulo.getCategoria(),
+                                        null, // Evitar recursão infinita
+                                        null, // Evitar recursão infinita
+                                        null, // Evitar recursão infinita
+                                        null  // itens não incluídos aqui
+                                ))
+                                .collect(java.util.stream.Collectors.toList())
+                        : new java.util.ArrayList<>()
         );
     }
 }

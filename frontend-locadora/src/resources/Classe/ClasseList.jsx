@@ -5,7 +5,7 @@ export const ClasseList = () => (
         <Datagrid rowClick="show">
             <TextField source="nome" />
             <NumberField source="valor" />
-            <DateField source="prazoDevolucao" />
+            <NumberField source="prazoDevolucao" />
             <ArrayField label="Títulos" source="titulos">
                 <SingleFieldList>
                     <ChipField source="nome" />

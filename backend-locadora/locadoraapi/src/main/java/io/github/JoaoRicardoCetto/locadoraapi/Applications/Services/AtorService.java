@@ -1,7 +1,7 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Applications.Services;
 
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Common.BaseService;
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Exceptions.InvalidOperationException;
+import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Exceptions.AtorDeleteException;
 import io.github.JoaoRicardoCetto.locadoraapi.Applications.Validators.AtorValidator;
 import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Ator;
 import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.AtorRepository;
@@ -27,7 +27,7 @@ public class AtorService extends BaseService<Ator> {
     @Override
     public void deletar(Ator entity) {
         if(validator.possuiTitulo(entity)){
-            throw new InvalidOperationException("Não é possível excluir Ator vinculado a um ou mais Títulos");
+            throw new AtorDeleteException("Não é possível excluir Ator vinculado a um ou mais Títulos");
         }
         super.deletar(entity);
     }

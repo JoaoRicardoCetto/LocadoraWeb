@@ -16,6 +16,6 @@ public record ClasseRequestDto(
         double valor,
         
         @NotNull(message = "Prazo de devolução é obrigatório")
-        LocalDate prazoDevolucao
+        int prazoDevolucao
 ) {
 }

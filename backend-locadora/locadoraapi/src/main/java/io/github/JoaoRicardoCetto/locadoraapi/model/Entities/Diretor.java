@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Diretor extends BaseEntity {
     private String nome;
 
     @OneToMany(mappedBy = "diretor", fetch = FetchType.LAZY)
-    private List<Titulo> titulos;
+    private List<Titulo> titulos = new ArrayList<>();
 
     @Deprecated
     public Diretor() {

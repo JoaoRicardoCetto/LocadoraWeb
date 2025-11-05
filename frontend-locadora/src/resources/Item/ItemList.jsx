@@ -7,7 +7,7 @@ export const ItemList = () => (
             <TextField source="tipo" />
             <DateField source="dataAquisicao" />
             {/* Mostrar título aninhado (nome) */}
-            <TextField label="Título" source="titulo.nome" />
+            <TextField label="Titulo" source="titulo.nome" />
             <EditButton />
         </Datagrid>
     </List>
