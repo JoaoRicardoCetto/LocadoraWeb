@@ -15,19 +15,22 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEx handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
-
+    public ResponseEx handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         List<FieldError> fieldErrors = ex.getFieldErrors();
-
-        List<FieldEx> listaErros = fieldErrors
-                .stream()
+        List<FieldEx> listaErros = fieldErrors.stream()
                 .map(fe -> new FieldEx(fe.getField(), fe.getDefaultMessage()))
                 .collect(Collectors.toList());
-
         return new ResponseEx(
                 HttpStatus.UNPROCESSABLE_ENTITY.value(),
                 "Erro de validação.",
                 listaErros
         );
     }
+
+    @ExceptionHandler(AtorDeleteException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEx handleAtorDeleteException(AtorDeleteException ex) {
+        return ResponseEx.conflito(ex.getMessage());
+    }
+
 }
