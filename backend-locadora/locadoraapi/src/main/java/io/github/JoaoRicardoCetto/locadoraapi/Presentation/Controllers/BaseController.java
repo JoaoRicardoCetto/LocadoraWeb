@@ -63,7 +63,7 @@ public abstract class BaseController
                 // 💡 HEADER ALTERNATIVO: Content-Range
                 .header("Content-Range", contentRangeHeader)
                 // Se o seu frontend estiver em um domínio diferente:
-                // .header("Access-Control-Expose-Headers", "Content-Range")
+                .header("Access-Control-Expose-Headers", "Content-Range")
                 .body(responseDtos);
     }
 

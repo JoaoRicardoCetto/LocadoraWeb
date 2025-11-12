@@ -1,8 +1,8 @@
 package io.github.JoaoRicardoCetto.locadoraapi.Applications.Validators;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.AtorRepository;
-import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.TituloRepository;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.Ator;
+import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.ControleAcervoRepositories.AtorRepository;
+import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.ControleAcervoRepositories.TituloRepository;
+import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Ator;
 import org.springframework.stereotype.Component;
 
 @Component
