@@ -41,6 +41,12 @@ export const TituloEdit = (props) => {
             delete payload.atores;
         }
 
+        // Lógica de Itens
+        if (payload.itens) {
+            payload.itensIds = payload.itens;
+            delete payload.itens;
+        }
+
         // Remove props auxiliares/undefined
         Object.keys(payload).forEach((k) => {
             if (payload[k] === undefined) 
@@ -93,6 +99,17 @@ export const TituloEdit = (props) => {
                 >
                     <AutocompleteArrayInput optionText="nome" />
                 </ReferenceArrayInput>
+
+                <ReferenceArrayInput
+                    label="Itens"
+                    source="itens"
+                    reference="itens"
+                    allowEmpty
+                    format={(value) => Array.isArray(value) ? value.map(v => (typeof v === 'object' && v !== null ? String(v.id) : String(v))) : []}
+                >
+                    <AutocompleteArrayInput optionText="numSerie" />
+                </ReferenceArrayInput>
+
             </SimpleForm>
         </Edit>
     );

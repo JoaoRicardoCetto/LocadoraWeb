@@ -8,7 +8,10 @@ import {
   SelectInput,
   ReferenceArrayInput,
   SelectArrayInput,
-  useNotify
+  useNotify,
+  ArrayInput,
+  SimpleFormIterator,
+  NumberInput
 } from 'react-admin';
 
 const validateRequired = required();
@@ -46,6 +49,10 @@ export const TituloCreate = (props) => {
 
         <ReferenceArrayInput source="atoresIds" reference="atores" allowEmpty>
           <SelectArrayInput optionText="nome" />
+        </ReferenceArrayInput>
+
+        <ReferenceArrayInput source="itensIds" reference="itens" allowEmpty>
+          <SelectArrayInput optionText="numSerie" />
         </ReferenceArrayInput>
       </SimpleForm>
     </Create>

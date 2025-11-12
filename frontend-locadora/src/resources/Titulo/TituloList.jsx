@@ -6,6 +6,7 @@ import {
   ArrayField,
   SingleFieldList,
   ChipField,
+  ReferenceManyField
 } from 'react-admin';
 
 export const TituloList = () => (
@@ -16,16 +17,17 @@ export const TituloList = () => (
       <TextField source="sinopse" />
       <TextField source="categoria" />
 
-      {/* objetos aninhados */}
-      <TextField label="Diretor" source="diretor.nome" />
-      <TextField label="Classe" source="classe.nome" />
+      <TextField label="Diretor" source="diretor.nome" link="show" />
 
-      <ArrayField label="Atores" source="atores">
+      <TextField label="Classe" source="classe.nome" link="show" />
+
+      <ArrayField label="Atores" source="atores" link="show">
         <SingleFieldList>
           <ChipField source="nome" />
         </SingleFieldList>
       </ArrayField>
-      <ArrayField label="Itens" source="itens">
+
+      <ArrayField label="Itens" source="itens" link="show">
         <SingleFieldList>
           <ChipField source="numSerie" />
         </SingleFieldList>

@@ -16,7 +16,6 @@ import { useNotify } from 'react-admin';
 export const ItemCreate = (props) => {
     const notify = useNotify();
     const handleError = (error) => {
-        // Tenta extrair mensagem do backend
         let message = 'Erro ao criar item.';
         if (error?.body) {
             try {
@@ -35,6 +34,10 @@ export const ItemCreate = (props) => {
                 <NumberInput source="numSerie" validate={validateRequired} />
                 <TextInput source="tipo" validate={validateRequired} />
                 <DateInput source="dataAquisicao" validate={validateRequired} />
+                
+                <ReferenceInput source="tituloId" reference="titulos">
+                    <AutocompleteInput optionText="nome" validate={validateRequired} />
+                </ReferenceInput>
             </SimpleForm>
         </Create>
     );
