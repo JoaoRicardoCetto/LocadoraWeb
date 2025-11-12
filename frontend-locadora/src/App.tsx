@@ -6,8 +6,8 @@ import { ClasseList, ClasseEdit, ClasseShow, ClasseCreate } from './resources/Cl
 import { DiretorList, DiretorEdit, DiretorShow, DiretorCreate } from './resources/Diretor/index.js';
 import { TituloList, TituloEdit, TituloShow, TituloCreate } from './resources/Titulo/index.js';
 import { ItemList, ItemEdit, ItemShow, ItemCreate } from './resources/Item/index.js';
-
-import FrontendInfo from './FrontendInfo'; // Import do componente que criamos
+import { SocioList, SocioEdit, SocioShow, SocioCreate } from './resources/Socio/index.js';
+import { DependenteList, DependenteEdit, DependenteShow, DependenteCreate } from './resources/Dependente/index.js';
 
 function App() {
   return (
@@ -18,12 +18,9 @@ function App() {
         <Resource name="diretores" list={DiretorList} edit={DiretorEdit} show={DiretorShow} create={DiretorCreate} />
         <Resource name="titulos" list={TituloList} edit={TituloEdit} show={TituloShow} create={TituloCreate} />
         <Resource name="itens" list={ItemList} edit={ItemEdit} show={ItemShow} create={ItemCreate} />
+        <Resource name="socios" list={SocioList} edit={SocioEdit} show={SocioShow} create={SocioCreate} />
+        <Resource name="dependentes" list={DependenteList} edit={DependenteEdit} show={DependenteShow} create={DependenteCreate} />
       </Admin>
-
-    {/* Banner mostrando qual frontend está ativo */}
-      <div><FrontendInfo /></div>
-
-    {/* React Admin */}
       
     </div>
   );
