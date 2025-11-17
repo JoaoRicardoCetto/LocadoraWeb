@@ -1,6 +1,6 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo;
+package io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo;
 
-import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
+import io.github.JoaoRicardoCetto.locadoraapi.model.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model.Entities.AtendimentoCliente;
+package io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente;
 
 
 import jakarta.persistence.Entity;

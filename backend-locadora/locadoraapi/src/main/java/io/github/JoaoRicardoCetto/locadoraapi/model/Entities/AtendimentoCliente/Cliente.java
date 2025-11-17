@@ -1,7 +1,6 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model.Entities.AtendimentoCliente;
+package io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente;
 
-import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
-import jakarta.persistence.Entity;
+import io.github.JoaoRicardoCetto.locadoraapi.model.common.BaseEntity;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;

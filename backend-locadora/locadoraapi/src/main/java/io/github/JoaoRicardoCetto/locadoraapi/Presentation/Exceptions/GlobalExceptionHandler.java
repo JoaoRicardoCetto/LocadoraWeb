@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Exceptions;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -31,6 +31,12 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEx handleAtorDeleteException(AtorDeleteException ex) {
         return ResponseEx.conflito(ex.getMessage());
+    }
+
+    @ExceptionHandler(DependenteCreateException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEx handleDependenteCreateException(DependenteCreateException ex) {
+            return ResponseEx.conflito(ex.getMessage());
     }
 
 }

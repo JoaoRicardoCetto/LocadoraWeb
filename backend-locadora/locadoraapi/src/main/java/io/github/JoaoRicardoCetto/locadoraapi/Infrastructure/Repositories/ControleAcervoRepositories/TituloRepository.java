@@ -1,8 +1,8 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.ControleAcervoRepositories;
+package io.github.JoaoRicardoCetto.locadoraapi.infrastructure.repositories.controleAcervoRepositories;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Common.IBaseRepository;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Ator;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Titulo;
+import io.github.JoaoRicardoCetto.locadoraapi.infrastructure.common.IBaseRepository;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Ator;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Titulo;
 
 public interface TituloRepository extends IBaseRepository<Titulo> {
     boolean existsByAtores(Ator ator);

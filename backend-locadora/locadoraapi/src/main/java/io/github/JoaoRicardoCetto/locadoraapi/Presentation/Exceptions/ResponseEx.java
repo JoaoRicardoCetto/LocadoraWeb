@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Exceptions;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.exceptions;
 
 import org.springframework.http.HttpStatus;
 

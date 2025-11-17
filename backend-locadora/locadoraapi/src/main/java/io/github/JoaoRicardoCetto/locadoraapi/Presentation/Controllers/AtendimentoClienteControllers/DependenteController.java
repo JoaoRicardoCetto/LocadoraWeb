@@ -1,11 +1,15 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.AtendimentoClienteControllers;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.AtendimentoClienteControllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.AtendimentoClienteServices.DependenteService;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.BaseController;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.AtendimentoClienteRequestDtos.DependenteRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.AtendimentoClienteResponseDtos.DependenteResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.AtendimentoClienteMappers.DependenteMapper;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.AtendimentoCliente.Dependente;
+import io.github.JoaoRicardoCetto.locadoraapi.application.exceptions.InvalidOperationException;
+import io.github.JoaoRicardoCetto.locadoraapi.application.services.atendimentoClienteServices.DependenteService;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.BaseController;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.request.atendimentoClienteRequestDtos.DependenteRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.atendimentoClienteResponseDtos.DependenteResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.MappersOld.AtendimentoClienteMappers.DependenteMapper;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente.Dependente;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.exceptions.DependenteCreateException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +33,5 @@ public class DependenteController extends BaseController<Dependente, DependenteS
     protected DependenteResponseDto toResponseDto(Dependente entity) {
         return dependenteMapper.toResponseDto(entity);
     }
+
 }

@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.AtendimentoClienteResponseDtos;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.atendimentoClienteResponseDtos;
 
 import java.time.LocalDate;
 import java.util.List;

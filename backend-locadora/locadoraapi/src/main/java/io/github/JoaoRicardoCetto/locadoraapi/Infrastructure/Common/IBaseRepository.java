@@ -1,6 +1,6 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Common;
+package io.github.JoaoRicardoCetto.locadoraapi.infrastructure.common;
 
-import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
+import io.github.JoaoRicardoCetto.locadoraapi.model.common.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

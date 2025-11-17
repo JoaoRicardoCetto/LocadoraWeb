@@ -1,11 +1,11 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.ControleAcervoControllers;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.ControleAcervoControllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.BaseController;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.ControleAcervoRequestDtos.ItemRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ControleAcervoResponseDtos.ItemResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.ControleAcevoMappers.ItemMapper;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Item;
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.ControleAcervoServices.ItemService;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.BaseController;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.request.controleAcervoRequestDtos.ItemRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.controleAcervoResponseDtos.ItemResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.MappersOld.ControleAcevoMappers.ItemMapper;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Item;
+import io.github.JoaoRicardoCetto.locadoraapi.application.services.controleAcervoServices.ItemService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,11 +1,11 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.AtendimentoClienteControllers;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.AtendimentoClienteControllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.AtendimentoClienteServices.SocioService;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.BaseController;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.AtendimentoClienteRequestDtos.SocioRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.AtendimentoClienteResponseDtos.SocioResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.AtendimentoClienteMappers.SocioMapper;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.AtendimentoCliente.Socio;
+import io.github.JoaoRicardoCetto.locadoraapi.application.services.atendimentoClienteServices.SocioService;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.BaseController;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.request.atendimentoClienteRequestDtos.SocioRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.atendimentoClienteResponseDtos.SocioResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.MappersOld.AtendimentoClienteMappers.SocioMapper;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente.Socio;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

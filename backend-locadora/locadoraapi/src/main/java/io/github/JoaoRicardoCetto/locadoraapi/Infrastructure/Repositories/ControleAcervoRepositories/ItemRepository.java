@@ -1,7 +1,7 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Repositories.ControleAcervoRepositories;
+package io.github.JoaoRicardoCetto.locadoraapi.infrastructure.repositories.controleAcervoRepositories;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Infrastructure.Common.IBaseRepository;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Item;
+import io.github.JoaoRicardoCetto.locadoraapi.infrastructure.common.IBaseRepository;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Item;
 
 import java.util.List;
 import java.util.UUID;

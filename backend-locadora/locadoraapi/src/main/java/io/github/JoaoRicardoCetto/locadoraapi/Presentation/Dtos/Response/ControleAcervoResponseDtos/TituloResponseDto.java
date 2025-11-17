@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ControleAcervoResponseDtos;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.controleAcervoResponseDtos;
 
 import java.time.LocalDate;
 import java.util.Set;

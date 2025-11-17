@@ -1,7 +1,7 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.model.Common.BaseEntity;
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Common.BaseService;
+import io.github.JoaoRicardoCetto.locadoraapi.model.common.BaseEntity;
+import io.github.JoaoRicardoCetto.locadoraapi.application.services.common.BaseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-// E = Entidade (Ex: Ator), S = Service (Ex: AtorService), request = Request DTO, response = Response DTO
+// E = Entidade (Ex: Ator), S = Service (Ex: AtorService), request = request DTO, response = response DTO
 public abstract class BaseController
         <E extends BaseEntity,
         S extends BaseService<E>,

@@ -1,11 +1,11 @@
-package io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.ControleAcervoControllers;
+package io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.ControleAcervoControllers;
 
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Controllers.BaseController;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Request.ControleAcervoRequestDtos.TituloRequestDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Dtos.Response.ControleAcervoResponseDtos.TituloResponseDto;
-import io.github.JoaoRicardoCetto.locadoraapi.Presentation.Mappers.ControleAcevoMappers.TituloMapper;
-import io.github.JoaoRicardoCetto.locadoraapi.model.Entities.ControleAcervo.Titulo;
-import io.github.JoaoRicardoCetto.locadoraapi.Applications.Services.ControleAcervoServices.TituloService;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.controllers.BaseController;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.request.controleAcervoRequestDtos.TituloRequestDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.controleAcervoResponseDtos.TituloResponseDto;
+import io.github.JoaoRicardoCetto.locadoraapi.presentation.MappersOld.ControleAcevoMappers.TituloMapper;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Titulo;
+import io.github.JoaoRicardoCetto.locadoraapi.application.services.controleAcervoServices.TituloService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

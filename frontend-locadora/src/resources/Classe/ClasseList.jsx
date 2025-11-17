@@ -11,7 +11,6 @@ export const ClasseList = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
-            <EditButton />
         </Datagrid>
     </List>
 );

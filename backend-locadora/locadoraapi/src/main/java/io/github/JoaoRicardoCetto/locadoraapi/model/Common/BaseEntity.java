@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.model.Common;
+package io.github.JoaoRicardoCetto.locadoraapi.model.common;
 
 import jakarta.persistence.*;
 import lombok.Getter;
