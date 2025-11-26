@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface DependenteRepository extends IBaseRepository<Dependente> {
-    List<Dependente> findBySocioId (UUID socioId);
+    long countBySocioIdAndEstahAtivoTrue (UUID socioId);
 }

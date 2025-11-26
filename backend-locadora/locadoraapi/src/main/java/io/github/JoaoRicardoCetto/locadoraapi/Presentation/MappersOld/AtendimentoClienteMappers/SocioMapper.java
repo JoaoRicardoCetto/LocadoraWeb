@@ -17,13 +17,12 @@ public class SocioMapper {
         if (requestDto == null) {
             return null;
         }
-        int numInscricao = Integer.parseInt(requestDto.numInscricao());
         return new Socio(
-                numInscricao,
                 requestDto.nome(),
                 requestDto.dtNascimento(),
                 requestDto.sexo(),
                 requestDto.estahAtivo(),
+                null,
                 requestDto.cpf(),
                 requestDto.endereco(),
                 requestDto.telefone(),

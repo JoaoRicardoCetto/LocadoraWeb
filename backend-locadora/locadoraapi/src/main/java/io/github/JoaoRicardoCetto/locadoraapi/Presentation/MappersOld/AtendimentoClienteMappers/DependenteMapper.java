@@ -6,29 +6,27 @@ import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.atendim
 import io.github.JoaoRicardoCetto.locadoraapi.presentation.dtos.response.atendimentoClienteResponseDtos.SocioResponseDto;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente.Dependente;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente.Socio;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class DependenteMapper {
 
     private final SocioService socioService;
-
-    public DependenteMapper(SocioService socioService) {
-        this.socioService = socioService;
-    }
 
     public Dependente toEntity(DependenteRequestDto requestDto) {
         if (requestDto == null) {
             return null;
         }
         Socio socio = socioService.obterPorId(requestDto.socioId()).orElse(null);
-        int numInscricao = Integer.parseInt(requestDto.numInscricao());
+
         return new Dependente(
-                numInscricao,
                 requestDto.nome(),
                 requestDto.dtNascimento(),
                 requestDto.sexo(),
                 requestDto.estahAtivo(),
+                null,
                 socio
         );
     }

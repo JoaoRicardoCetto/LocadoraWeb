@@ -2,9 +2,13 @@ package io.github.JoaoRicardoCetto.locadoraapi.infrastructure.repositories.contr
 
 import io.github.JoaoRicardoCetto.locadoraapi.infrastructure.common.IBaseRepository;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Ator;
+import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Classe;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Titulo;
 
-public interface TituloRepository extends IBaseRepository<Titulo> {
-    boolean existsByAtores(Ator ator);
+import java.util.UUID;
 
+public interface TituloRepository extends IBaseRepository<Titulo> {
+    boolean existsByAtoresId(UUID atorId);
+    boolean existsByClasseId(UUID classeId);
+    boolean existsByDiretorId(UUID diretorId);
 }

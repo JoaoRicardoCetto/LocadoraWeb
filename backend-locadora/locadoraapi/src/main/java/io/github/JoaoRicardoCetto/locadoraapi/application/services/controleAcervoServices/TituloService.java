@@ -1,6 +1,8 @@
 package io.github.JoaoRicardoCetto.locadoraapi.application.services.controleAcervoServices;
 
+import io.github.JoaoRicardoCetto.locadoraapi.application.exceptions.TituloDeleteException;
 import io.github.JoaoRicardoCetto.locadoraapi.application.services.common.BaseService;
+import io.github.JoaoRicardoCetto.locadoraapi.application.validators.TituloValidator;
 import io.github.JoaoRicardoCetto.locadoraapi.infrastructure.repositories.controleAcervoRepositories.ItemRepository;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Ator;
 import io.github.JoaoRicardoCetto.locadoraapi.model.entities.controleAcervo.Titulo;
@@ -20,6 +22,7 @@ public class TituloService extends BaseService<Titulo> {
     private final TituloRepository tituloRepository;
     private final AtorRepository atorRepository;
     private final ItemRepository itemRepository;
+    private final TituloValidator tituloValidator;
 
     @Override
     protected IBaseRepository<Titulo> getRepository() {
@@ -50,5 +53,14 @@ public class TituloService extends BaseService<Titulo> {
         }
 
         return saved;
+    }
+
+    @Override
+    public void deletar(Titulo entity) {
+        if(tituloValidator.possuiItem(entity.getId())){
+            throw new TituloDeleteException("Não é possível excluir Títulos vinculado a um ou mais Itens");
+        }
+
+        super.deletar(entity);
     }
 }
