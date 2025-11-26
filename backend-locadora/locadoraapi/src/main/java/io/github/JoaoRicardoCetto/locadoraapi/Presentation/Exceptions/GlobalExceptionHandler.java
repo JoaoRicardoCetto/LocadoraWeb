@@ -1,5 +1,7 @@
 package io.github.JoaoRicardoCetto.locadoraapi.presentation.exceptions;
 
+
+import io.github.JoaoRicardoCetto.locadoraapi.application.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,21 +24,27 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toList());
         return new ResponseEx(
                 HttpStatus.UNPROCESSABLE_ENTITY.value(),
-                "Erro de validação.",
+                ex.getMessage(),
                 listaErros
         );
     }
 
-    @ExceptionHandler(AtorDeleteException.class)
+    @ExceptionHandler({
+            AtorDeleteException.class,
+            ClasseDeleteException.class,
+            DiretorDeleteException.class,
+            TituloDeleteException.class,
+            DependenteCreateException.class
+    })
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEx handleAtorDeleteException(AtorDeleteException ex) {
+    public ResponseEx handleConflictExceptions(RuntimeException ex) {
         return ResponseEx.conflito(ex.getMessage());
     }
 
-    @ExceptionHandler(DependenteCreateException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEx handleDependenteCreateException(DependenteCreateException ex) {
-            return ResponseEx.conflito(ex.getMessage());
+    @ExceptionHandler(InvalidOperationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEx handleInvalidOperation(InvalidOperationException ex){
+        return ResponseEx.respostaPadrao(ex.getMessage());
     }
 
 }

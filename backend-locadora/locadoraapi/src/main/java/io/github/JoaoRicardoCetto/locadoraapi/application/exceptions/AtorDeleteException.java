@@ -1,4 +1,4 @@
-package io.github.JoaoRicardoCetto.locadoraapi.presentation.exceptions;
+package io.github.JoaoRicardoCetto.locadoraapi.application.exceptions;
 
 public class AtorDeleteException extends RuntimeException {
     public AtorDeleteException(String message) {
