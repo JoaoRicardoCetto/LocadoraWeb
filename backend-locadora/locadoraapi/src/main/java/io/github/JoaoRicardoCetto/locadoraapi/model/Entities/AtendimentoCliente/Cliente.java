@@ -1,32 +1,39 @@
 package io.github.JoaoRicardoCetto.locadoraapi.model.entities.atendimentoCliente;
 
 import io.github.JoaoRicardoCetto.locadoraapi.model.common.BaseEntity;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@MappedSuperclass
+@Entity
+@Table(name = "cliente")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 public class Cliente extends BaseEntity {
-    private int numInscricao;
+    private long numInscricao;
     private String nome;
     private LocalDate dataNascimento;
     private char sexo;
     private Boolean estahAtivo;
 
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Locacao> locacoes = new ArrayList<>();
+
     @Deprecated
     public Cliente() {
     }
 
-    public Cliente(int numInscricao, String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo) {
-        this.numInscricao = numInscricao;
+    public Cliente(String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo, List<Locacao> locacoes) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.estahAtivo = estahAtivo;
+        this.estahAtivo = true;
+        this.locacoes = locacoes;
     }
 }
 

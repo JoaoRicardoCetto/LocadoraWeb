@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -15,12 +16,11 @@ public class DependenteValidator {
 
     private final DependenteRepository dependenteRepository;
 
-    public boolean socioPossuiMaisQueTresDependentes(Dependente dependente){
-        List<Dependente> dependentes = dependenteRepository.findBySocioId(dependente.getSocio().getId());
-        if(dependentes.size() > 3) {
-            return true;
-        }
-        return false;
+    public boolean socioPossuiMaisQueTresDependentesAtivos(UUID socioId){
+
+        long count = dependenteRepository.countBySocioIdAndEstahAtivoTrue(socioId);
+
+        return count >= 3;
     }
 
 }

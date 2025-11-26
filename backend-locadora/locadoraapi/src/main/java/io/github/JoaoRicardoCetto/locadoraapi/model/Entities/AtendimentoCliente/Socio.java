@@ -28,8 +28,8 @@ public class Socio extends Cliente{
     public Socio() {
     }
 
-    public Socio(int numInscricao, String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo, String cpf, String endereço, String telefone, List<Dependente> dependentes) {
-        super(numInscricao, nome, dataNascimento, sexo, estahAtivo);
+    public Socio(String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo, List<Locacao> locacoes, String cpf, String endereço, String telefone, List<Dependente> dependentes) {
+        super(nome, dataNascimento, sexo, estahAtivo, locacoes);
         this.cpf = cpf;
         this.endereço = endereço;
         this.telefone = telefone;

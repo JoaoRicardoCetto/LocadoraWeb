@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public record DependenteRequestDto (
-        @NotNull(message = "O número de inscrição é obrigatório")
-        String numInscricao,
         @NotBlank(message = "O nome do dependente é obrigatório")
         String nome,
         LocalDate dtNascimento,

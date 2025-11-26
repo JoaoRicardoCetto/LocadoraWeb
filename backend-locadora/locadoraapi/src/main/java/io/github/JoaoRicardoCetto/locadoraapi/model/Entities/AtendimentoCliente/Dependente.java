@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table
@@ -23,8 +24,8 @@ public class Dependente extends Cliente{
     public Dependente() {
     }
 
-    public Dependente(int numInscricao, String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo, Socio socio) {
-        super(numInscricao, nome, dataNascimento, sexo, estahAtivo);
+    public Dependente(String nome, LocalDate dataNascimento, char sexo, Boolean estahAtivo, List<Locacao> locacoes, Socio socio) {
+        super(nome, dataNascimento, sexo, estahAtivo, locacoes);
         this.socio = socio;
     }
 }
