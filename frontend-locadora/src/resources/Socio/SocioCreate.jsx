@@ -5,7 +5,6 @@ const validateRequired = required();
 export const SocioCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="numInscricao" label="Inscrição" validate={validateRequired} />
             <TextInput source="nome" validate={validateRequired} />
             <DateInput source="dtNascimento" validate={validateRequired} />
             <TextInput source="sexo" validate={validateRequired} />

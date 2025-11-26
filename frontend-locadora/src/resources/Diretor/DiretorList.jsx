@@ -1,4 +1,15 @@
-import { List, Datagrid, TextField, EditButton, ArrayField, SingleFieldList, ChipField } from 'react-admin';
+import { 
+    List, 
+    Datagrid, 
+    TextField, 
+    ArrayField, 
+    SingleFieldList, 
+    ChipField, 
+    EditButton,
+    DeleteButton,
+    ShowButton,
+    DeleteWithConfirmButton, 
+} from 'react-admin';
 
 export const DiretorList = () => (
     <List>
@@ -9,7 +20,10 @@ export const DiretorList = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
+            
             <EditButton />
+            <DeleteWithConfirmButton />
+            <ShowButton />
         </Datagrid>
     </List>
 );

@@ -3,9 +3,10 @@ import {
     Datagrid, 
     TextField, 
     DateField, 
+    FunctionField,
     EditButton,
-    ReferenceField,
-    FunctionField
+    DeleteButton,
+    ShowButton,
 } from 'react-admin';
 
 export const ItemList = () => (
@@ -18,6 +19,11 @@ export const ItemList = () => (
             <TextField source="tipo" label="Tipo" />
             <DateField source="dataAquisicao" label="Data Aquisição" />
             <TextField label="Titulo" source="titulo.nome" link="show" />
+
+            <EditButton />
+            <DeleteButton />
+            <ShowButton />
+
         </Datagrid>
     </List>
 );

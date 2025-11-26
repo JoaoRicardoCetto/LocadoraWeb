@@ -1,8 +1,23 @@
-import { List, Datagrid, TextField, DateField, ArrayField, SingleFieldList, ChipField } from 'react-admin';
+import { 
+    List, 
+    Datagrid, 
+    TextField, 
+    DateField, 
+    ArrayField, 
+    SingleFieldList, 
+    ChipField, 
+    EditButton,
+    DeleteButton,
+    ShowButton,
+    DeleteWithConfirmButton,
+    FunctionField
+ } from 'react-admin';
+
+import ToggleAtivoButton from '../ToggleAtivoButton';
 
 export const SocioList = () => (
     <List>
-        <Datagrid rowClick="show">
+        <Datagrid rowClick="">
             <TextField source="numInscricao" label="Inscrição" />
             <TextField source="nome" />
             <DateField source="dtNascimento" />
@@ -15,6 +30,16 @@ export const SocioList = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
+
+            <FunctionField label="Atividade" render={() => (
+                <ToggleAtivoButton resourceOverride="socios" activeFieldOverride="estahAtivo" method="PATCH" />
+                )} 
+            />
+
+            <EditButton />
+            <DeleteWithConfirmButton />
+            <ShowButton />
+
         </Datagrid>
     </List>
 );

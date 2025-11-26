@@ -6,7 +6,9 @@ import {
   ArrayField,
   SingleFieldList,
   ChipField,
-  ReferenceManyField
+  EditButton,
+  DeleteButton,
+  ShowButton,
 } from 'react-admin';
 
 export const TituloList = () => (
@@ -32,6 +34,11 @@ export const TituloList = () => (
           <ChipField source="numSerie" />
         </SingleFieldList>
       </ArrayField>
+
+      <EditButton /> 
+      <DeleteButton />
+      <ShowButton />
+    
     </Datagrid>
   </List>
 );

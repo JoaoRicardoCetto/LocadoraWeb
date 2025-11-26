@@ -1,4 +1,4 @@
-import { Show, SimpleShowLayout, TextField, DateField, ArrayField, SingleFieldList, ChipField } from 'react-admin';
+import { Show, SimpleShowLayout, BooleanField, TextField, DateField, ArrayField, SingleFieldList, ChipField } from 'react-admin';
 
 export const SocioShow = () => (
     <Show>
@@ -11,6 +11,7 @@ export const SocioShow = () => (
             <TextField source="cpf" />
             <TextField source="endereco" />
             <TextField source="telefone" />
+            <BooleanField source="estahAtivo" label="Está ativo" />
             <ArrayField label="Dependentes" source="dependentes">
                 <SingleFieldList>
                     <ChipField source="nome" />

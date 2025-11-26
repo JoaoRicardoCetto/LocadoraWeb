@@ -15,13 +15,28 @@ export const ClasseEdit = () => {
         titulos: data.titulos || [],
     });
 
+const formatTitulos = (value) => {
+        if (Array.isArray(value)) {
+            return value.map(item => 
+                typeof item === 'object' && item !== null ? String(item.id) : String(item)
+            );
+        }
+        return [];
+    };
+
     return (
         <Edit transform={transform}>
             <SimpleForm>
                 <TextInput source="nome" validate={required()} />
                 <NumberInput source="valor" validate={required()} />
                 <NumberInput source="prazoDevolucao" validate={required()} />
-                <ReferenceArrayInput source="titulos" reference="titulo">
+                <ReferenceArrayInput
+                    source="titulos"
+                    reference="titulos"
+                    allowEmpty
+                    format={formatTitulos}
+                    filter={{}}
+                >
                     <AutocompleteArrayInput optionText="nome" />
                 </ReferenceArrayInput>
             </SimpleForm>

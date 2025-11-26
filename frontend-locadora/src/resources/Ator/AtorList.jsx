@@ -5,6 +5,9 @@ import {
     ArrayField,
     SingleFieldList,
     ChipField,
+    EditButton,
+    DeleteButton,
+    ShowButton,
 } from 'react-admin';
 
 export const AtorList = () => (
@@ -17,6 +20,10 @@ export const AtorList = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
+            
+            <EditButton />
+            <DeleteButton />
+            <ShowButton />
         </Datagrid>
     </List>
 );
