@@ -9,21 +9,25 @@ import {
     ShowButton,
 } from 'react-admin';
 
+import { Box } from '@mui/material'; // Para lidar com responsividade
+
 export const ItemList = () => (
     <List>
-        <Datagrid rowClick="show">
-            <FunctionField
-                label="Nº Série"
-                render={record => `${record.numSerie}`}
-            />
-            <TextField source="tipo" label="Tipo" />
-            <DateField source="dataAquisicao" label="Data Aquisição" />
-            <TextField label="Titulo" source="titulo.nome" link="show" />
+        <Box sx={{ overflowX: 'auto' }}> 
+            <Datagrid rowClick="show" size="small">
+                <FunctionField
+                    label="Nº Série"
+                    render={record => `${record.numSerie}`}
+                />
+                <TextField source="tipo" label="Tipo" />
+                <DateField source="dataAquisicao" label="Data Aquisição" />
+                <TextField label="Titulo" source="titulo.nome" link="show" />
 
-            <EditButton />
-            <DeleteButton />
-            <ShowButton />
+                <EditButton label=""/>
+                <DeleteButton label=""/>
+                <ShowButton label=""/>
 
-        </Datagrid>
+            </Datagrid>
+        </Box>
     </List>
 );

@@ -40,4 +40,9 @@ public class Locacao extends BaseEntity {
         this.item = item;
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Locacao feita em " + dtLocacao + " do item " + item;
+    }
 }

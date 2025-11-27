@@ -21,9 +21,9 @@ export const AtorList = () => (
                 </SingleFieldList>
             </ArrayField>
             
-            <EditButton />
-            <DeleteButton />
-            <ShowButton />
+            <EditButton label=""/>
+            <DeleteButton label=""/>
+            <ShowButton label=""/>
         </Datagrid>
     </List>
 );

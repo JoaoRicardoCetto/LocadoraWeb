@@ -20,10 +20,16 @@ export const DiretorList = () => (
                     <ChipField source="nome" />
                 </SingleFieldList>
             </ArrayField>
-            
-            <EditButton />
-            <DeleteWithConfirmButton />
-            <ShowButton />
+
+            <EditButton label=""/>
+            <
+                DeleteWithConfirmButton 
+                label="" 
+                confirmTitle="Tem certeza que deseja excluír diretor?"
+                confirmContent="Atenção! Esta ação é irreversível e removerá permanentemente o sócio e seus dependentes do sistema."
+            />
+            <ShowButton label=""/>
+
         </Datagrid>
     </List>
 );

@@ -35,9 +35,9 @@ export const TituloList = () => (
         </SingleFieldList>
       </ArrayField>
 
-      <EditButton /> 
-      <DeleteButton />
-      <ShowButton />
+      <EditButton label=""/> 
+      <DeleteButton label=""/>
+      <ShowButton label=""/>
     
     </Datagrid>
   </List>

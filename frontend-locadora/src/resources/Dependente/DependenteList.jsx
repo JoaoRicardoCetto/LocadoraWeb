@@ -11,28 +11,37 @@ import {
 } from 'react-admin';
 
 import ToggleAtivoButton from '../ToggleAtivoButton';
+import { Box } from '@mui/material'; // Para lidar com responsividade
 
 export const DependenteList = () => (
     <List>
-        <Datagrid rowClick="">
-            <TextField source="numInscricao" label="Inscrição" />
-            <TextField source="nome" />
-            <DateField source="dtNascimento" />
-            <TextField source="sexo" />
-            <ReferenceField label="Sócio" source="socio.id" reference="socios">
+        <Box sx={{ overflowX: 'auto' }}> 
+            <Datagrid rowClick="" size="small">
+                <TextField source="numInscricao" label="Inscrição" />
                 <TextField source="nome" />
-            </ReferenceField>
+                <DateField source="dtNascimento" />
+                <TextField source="sexo" />
+                <ReferenceField label="Sócio" source="socio.id" reference="socios">
+                    <TextField source="nome" />
+                </ReferenceField>
 
-            <FunctionField label="Atividade" render={() => (
-                <ToggleAtivoButton resourceOverride="dependentes" activeFieldOverride="estaAtivo" method="PATCH" />
-                )} 
-            />
+                <FunctionField label="Atividade" render={() => (
+                    <ToggleAtivoButton resourceOverride="dependentes" activeFieldOverride="estaAtivo" method="PATCH" />
+                    )} 
+                />
 
-            <EditButton />
-            <DeleteWithConfirmButton />
-            <ShowButton />
-            
-        </Datagrid>
+                <EditButton label=""/>
+
+                <
+                    DeleteWithConfirmButton 
+                    label="" confirmTitle="Tem certeza que deseja excluír dependente?"
+                    confirmContent="Atenção! Esta ação é irreversível e removerá permanentemente o dependente do sistema."
+                />
+
+                <ShowButton label=""/>
+                
+            </Datagrid>
+        </Box>
     </List>
 );
 

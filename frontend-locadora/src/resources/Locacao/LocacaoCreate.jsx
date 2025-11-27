@@ -80,11 +80,6 @@ export const LocacaoCreate = (props) => {
     return (
         <Create {...props} transform={sanitizePayload} onError={handleError}>
             <SimpleForm defaultValues={{ clienteTipo: 'socio', dtLocacao: today() }}>
-                <DateInput source="dtLocacao" label="Data locação" validate={required()} />
-                <DateInput source="dtDevolucaoPrevista" label="Devolução prevista" validate={required()} />
-                <DateInput source="dtDevolucaoEfetiva" label="Devolução efetiva" />
-                <NumberInput source="valorCobrado" label="Valor cobrado" validate={required()} min={0} />
-                <NumberInput source="multaCobrada" label="Multa" min={0} />
                 <ItemSelector />
                 <SelectInput source="clienteTipo" label="Tipo de cliente" choices={clienteChoices} />
                 <ClienteSelector />

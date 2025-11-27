@@ -14,33 +14,41 @@ import {
  } from 'react-admin';
 
 import ToggleAtivoButton from '../ToggleAtivoButton';
+import { Box } from '@mui/material'; // Para lidar com responsividade
 
 export const SocioList = () => (
     <List>
-        <Datagrid rowClick="">
-            <TextField source="numInscricao" label="Inscrição" />
-            <TextField source="nome" />
-            <DateField source="dtNascimento" />
-            <TextField source="sexo" />
-            <TextField source="cpf" />
-            <TextField source="endereco" />
-            <TextField source="telefone" />
-            <ArrayField label="Dependentes" source="dependentes">
-                <SingleFieldList>
-                    <ChipField source="nome" />
-                </SingleFieldList>
-            </ArrayField>
+        <Box sx={{ overflowX: 'auto' }}> 
 
-            <FunctionField label="Atividade" render={() => (
-                <ToggleAtivoButton resourceOverride="socios" activeFieldOverride="estahAtivo" method="PATCH" />
-                )} 
-            />
+            <Datagrid rowClick="" size="small">
+                <TextField source="numInscricao" label="Inscrição" />
+                <TextField source="nome" />
+                <DateField source="dtNascimento" />
+                <TextField source="sexo" />
+                <TextField source="cpf" />
+                <TextField source="endereco" />
+                <TextField source="telefone" />
+                <ArrayField label="Dependentes" source="dependentes">
+                    <SingleFieldList>
+                        <ChipField source="nome" />
+                    </SingleFieldList>
+                </ArrayField>
 
-            <EditButton />
-            <DeleteWithConfirmButton />
-            <ShowButton />
+                <FunctionField label="Atividade" render={() => (
+                    <ToggleAtivoButton resourceOverride="socios" activeFieldOverride="estahAtivo" method="PATCH" />
+                    )} 
+                />
 
-        </Datagrid>
+                <EditButton label=""/>
+                <
+                    DeleteWithConfirmButton 
+                    label="" confirmTitle="Tem certeza que deseja excluír sócio?"
+                    confirmContent="Atenção! Esta ação é irreversível e removerá permanentemente o sócio e seus dependentes do sistema."
+                />
+                <ShowButton label=""/>
+
+            </Datagrid>
+        </Box>
     </List>
 );
 
