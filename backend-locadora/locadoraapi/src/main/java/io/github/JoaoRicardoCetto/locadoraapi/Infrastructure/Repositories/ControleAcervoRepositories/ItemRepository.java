@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface ItemRepository extends IBaseRepository<Item> {
     List<Item> findByTituloId(UUID tituloId);
     boolean existsByTituloId(UUID tituloId);
+    Item findByNumSerie(int findByNumSerie);
 }

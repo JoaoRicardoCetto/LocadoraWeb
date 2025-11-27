@@ -26,4 +26,15 @@ public class ItemService extends BaseService<Item> {
         return itemRepository.findByTituloId(tituloId);
     }
 
+    public Item findByNumSerie(int numeroSerie) {
+
+        Item item = itemRepository.findByNumSerie(numeroSerie);
+
+        if(item == null){
+            throw new RuntimeException("Item não encontrado");
+        }
+
+        return item;
+    }
+
 }
