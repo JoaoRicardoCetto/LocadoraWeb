@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -27,6 +29,42 @@ public class TituloService extends BaseService<Titulo> {
     @Override
     protected IBaseRepository<Titulo> getRepository() {
         return this.tituloRepository;
+    }
+
+    public List<Titulo> buscarPorNomeTituloClasseOuAutor(String termo) {
+        // Combina resultados de múltiplas buscas, removendo duplicatas
+        Set<Titulo> titulosUnicos = new LinkedHashSet<>();
+        
+        // Busca por nome do título
+        titulosUnicos.addAll(tituloRepository.findByNomeContainingIgnoreCase(termo));
+        
+        // Busca por nome da classe
+        titulosUnicos.addAll(tituloRepository.findByClasseNomeContainingIgnoreCase(termo));
+        
+        // Busca por nome do ator
+        titulosUnicos.addAll(tituloRepository.findByAtoresNomeContainingIgnoreCase(termo));
+        
+        return List.copyOf(titulosUnicos);
+    }
+    
+    public List<Titulo> buscar(String termo, String tipo) {
+        if (termo == null || termo.trim().isEmpty()) {
+            return obterTodos();
+        }
+        
+        String tipoBusca = tipo != null ? tipo.toLowerCase() : "todos";
+        
+        if ("titulo".equals(tipoBusca)) {
+            return tituloRepository.findByNomeContainingIgnoreCase(termo);
+        } else if ("classe".equals(tipoBusca)) {
+            return tituloRepository.findByClasseNomeContainingIgnoreCase(termo);
+        } else if ("ator".equals(tipoBusca)) {
+            return tituloRepository.findByAtoresNomeContainingIgnoreCase(termo);
+        } else if ("categoria".equals(tipoBusca)) {
+            return tituloRepository.findByCategoriaContainingIgnoreCase(termo);
+        } else {
+            return buscarPorNomeTituloClasseOuAutor(termo);
+        }
     }
 
     @Override
