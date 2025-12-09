@@ -1,0 +1,2 @@
+export { PesquisaTitulo } from './PesquisaTitulo';
+

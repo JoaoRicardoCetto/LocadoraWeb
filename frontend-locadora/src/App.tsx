@@ -10,6 +10,7 @@ import { ItemList, ItemEdit, ItemShow, ItemCreate } from './resources/Item/index
 import { SocioList, SocioEdit, SocioShow, SocioCreate } from './resources/Socio/index.js';
 import { DependenteList, DependenteEdit, DependenteShow, DependenteCreate } from './resources/Dependente/index.js';
 import { LocacaoList, LocacaoEdit, LocacaoShow, LocacaoCreate } from './resources/Locacao/index.js';
+import { PesquisaTitulo } from './resources/PesquisaTitulo/index.js';
 
 // ícones do Material UI (escolha os que preferir)
 import PersonIcon from '@mui/icons-material/Person';
@@ -20,6 +21,7 @@ import Inventory2Icon from '@mui/icons-material/Inventory2';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
 
 function App() {
   return (
@@ -91,6 +93,12 @@ function App() {
           show={LocacaoShow}
           create={LocacaoCreate}
           icon={ShoppingCartIcon}
+        />
+        <Resource
+          name="pesquisa-titulos"
+          options={{label: "Pesquisa de Títulos"}}
+          list={PesquisaTitulo}
+          icon={SearchIcon}
         />
       </Admin>
     </div>
