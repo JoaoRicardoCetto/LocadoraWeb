@@ -1,6 +1,8 @@
 import simpleRestProvider from 'ra-data-simple-rest';
+import { getApiUrl } from './utils/apiConfig';
 
-// Base URL da sua API
-const dataProvider = simpleRestProvider('http://localhost:8080');
+const api = `http://localhost:8080`;
+
+const dataProvider = simpleRestProvider(api);
 
 export default dataProvider;
