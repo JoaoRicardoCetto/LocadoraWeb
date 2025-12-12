@@ -1,4 +1,5 @@
 package io.github.JoaoRicardoCetto.locadoraapi;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -13,10 +14,10 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173") // Ajuste para a porta do frontend
+                        .allowedOriginPatterns("*")
                         .allowedMethods("*")
                         .allowedHeaders("*")
-                        .exposedHeaders("Content-Range") // Exponha o Content-Range
+                        .exposedHeaders("Content-Range")
                         .allowCredentials(true);
             }
         };
